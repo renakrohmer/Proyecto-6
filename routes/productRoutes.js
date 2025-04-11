@@ -10,11 +10,11 @@ const {
 
 const protegerRuta = require('../middleware/authMiddleware');
 
-// Rutas RESTful mejoradas
-router.post('/', protegerRuta, createProduct); // Ruta para crear producto
-router.get('/', getAllProducts); // Ruta para obtener todos los productos
-router.get('/:id', getProductById); // Ruta para obtener un producto específico
-router.put('/:id', protegerRuta, updateProduct); // Ruta para actualizar producto
-router.delete('/:id', protegerRuta, deleteProduct); // Ruta para eliminar producto
+
+router.post('/', protegerRuta, createProduct); 
+router.get('/', getAllProducts); 
+router.get('/:id', getProductById); 
+router.put('/:id', protegerRuta, updateProduct); 
+router.delete('/:id', protegerRuta, deleteProduct); 
 
 module.exports = router;

@@ -6,8 +6,8 @@ const productSchema = new mongoose.Schema({
   precio: { type: Number, required: true },
   stock: { type: Number, required: true },
   categoria: { type: String, required: true },
-  creadoPor: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },  // Referencia al usuario
-  fechaCreacion: { type: Date, default: Date.now },  // Fecha de creación
+  creadoPor: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },  
+  fechaCreacion: { type: Date, default: Date.now },  
 });
 
 module.exports = mongoose.model('Product', productSchema);

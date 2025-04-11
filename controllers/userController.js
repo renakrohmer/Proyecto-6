@@ -2,12 +2,12 @@ const User = require('../models/userModel');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
-// Función para crear un token
+
 const generarToken = (userId) => {
   return jwt.sign({ id: userId }, process.env.JWT_SECRET, { expiresIn: '1d' });
 };
 
-// Registrar usuario
+
 exports.register = async (req, res) => {
   try {
     const { nombre, email, contraseña } = req.body;
@@ -27,7 +27,7 @@ exports.register = async (req, res) => {
   }
 };
 
-// Login
+
 exports.login = async (req, res) => {
   try {
     const { email, contraseña } = req.body;
@@ -46,7 +46,6 @@ exports.login = async (req, res) => {
   }
 };
 
-// Verificar token
 exports.verifyToken = (req, res) => {
   const token = req.headers.authorization?.split(' ')[1];
   if (!token) return res.status(401).json({ message: 'Token no proporcionado' });
@@ -59,7 +58,7 @@ exports.verifyToken = (req, res) => {
   }
 };
 
-// Actualizar información del usuario
+
 exports.updateUser = async (req, res) => {}
   const token = req.headers.authorization?.split(' ')[1];
   if (!token) return res.status(401).json({ message: 'Token requerido' });

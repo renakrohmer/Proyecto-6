@@ -1,6 +1,5 @@
 const Product = require('../models/Product');
 
-// Crear producto
 const createProduct = async (req, res) => {
   const { nombre, descripcion, precio, stock, categoria } = req.body;
 
@@ -15,18 +14,18 @@ const createProduct = async (req, res) => {
       precio,
       stock,
       categoria,
-      creadoPor: req.usuario._id, // Autenticación por el usuario
+      creadoPor: req.usuario._id, 
     });
 
     await newProduct.save();
     res.status(201).json(newProduct);
   } catch (err) {
-    console.error('Error al crear producto:', err);  // Log para depurar
+    console.error('Error al crear producto:', err);  
     res.status(500).json({ message: 'Error al crear producto: ' + err.message });
   }
 };
 
-// Obtener todos los productos
+
 const getAllProducts = async (req, res) => {
   try {
     const products = await Product.find();
@@ -36,7 +35,7 @@ const getAllProducts = async (req, res) => {
   }
 };
 
-// Obtener un producto específico
+
 const getProductById = async (req, res) => {
   try {
     const product = await Product.findById(req.params.id);
@@ -47,7 +46,7 @@ const getProductById = async (req, res) => {
   }
 };
 
-// Actualizar un producto
+
 const updateProduct = async (req, res) => {
   try {
     const product = await Product.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -58,7 +57,7 @@ const updateProduct = async (req, res) => {
   }
 };
 
-// Eliminar un producto
+
 const deleteProduct = async (req, res) => {
   try {
     const product = await Product.findByIdAndDelete(req.params.id);
